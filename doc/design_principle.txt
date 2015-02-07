@@ -1,0 +1,28 @@
+
+design principle
+1.only two interface
+    bool init_logger();
+    LOG();
+2.interface shouldn't block caller and return immediately.
+3.logger is scalable and easy to extend on iOS and Android.
+
+logger implementation layers
+
+|---------------------------|
+| interface layer           |
+|---------------------------|
+| log message receive layer |
+|---------------------------|
+| log message convert layer |
+|---------------------------|
+| log message write layer   |
+|---------------------------|
+
+1.interface layer
+    logger interface to caller
+2.log message receive layer
+    receive all log message from interface.
+3.log message convert layer
+    convert a message to a standard log line message
+4.log message write layer
+    write standard log line message to concrete file. Such as console, file, android ADT or Xcode.
