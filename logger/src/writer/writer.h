@@ -1,6 +1,8 @@
 #ifndef _LOGGER_WRITER_H_
 #define _LOGGER_WRITER_H_
 
+#include <string>
+
 namespace logger
 {
 
@@ -8,9 +10,14 @@ template <typename impl_type>
 class writer
 {
 public:
-    bool write_log()
+    writer(impl_type* impl)
     {
-        return impl_->write_log();
+        impl_ = impl;
+    }
+
+    bool write_log(const std::string& log)
+    {
+        return impl_->write_log(log);
     }
 
 private:

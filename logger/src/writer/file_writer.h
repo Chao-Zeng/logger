@@ -13,6 +13,7 @@ class FileWriter
 {
 public:
     FileWriter();
+    FileWriter(const std::string path, const std::string filename, uint64_t filesize);
 
     ~FileWriter();
 
@@ -22,12 +23,14 @@ public:
 
     inline void set_file_name(const std::string& filename);
 
+    inline void set_file_size(uint64_t file_size);
+
 private:
     bool write_line(const std::string& line);
     bool check_file();
     bool create_file(const std::string& fullpath_name);
-    bool get_fullpath_name();
     std::string get_time_string() const;
+    int64_t get_file_size(const char* filename) const;
 
     // delete copy constructor
     FileWriter(const FileWriter&);
@@ -38,7 +41,8 @@ private:
 private:
     std::string m_path;
     std::string m_filename;
-    uint32_t m_file_size;
+    std::string m_fullpath_filename_with_time;
+    uint64_t m_file_size_max;
     std::fstream m_file_handler;
 };
 
