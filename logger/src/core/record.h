@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 #include <stdint.h>
-#include <ctime>
+#include <sys/time.h>
 
 #include <string>
 
@@ -17,7 +17,7 @@ namespace logger
 class Record
 {
 public:
-	time_t time;
+	struct timeval time;
 	SeverityLevel level;
 	pid_t pid;
 	pid_t tid;
@@ -25,6 +25,10 @@ public:
 	std::string filename;
 	uint32_t line;
 	std::string function_name;
+
+    Record() : time(0, 0), level(INFO), pid(0), tid(0),
+        message(""), filename(""), line(0), function_name("")
+    {}
 };
 
 } // namespace logger

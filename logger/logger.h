@@ -25,12 +25,12 @@ enum SeverityLevel
 
 const char* const severity_level_name[] =
 {
-    "trace",
-    "debug",
-    "info",
-    "warning",
-    "error",
-    "fatal"
+    "TRACE",
+    "DEBUG",
+    "INFO",
+    "WARNING",
+    "ERROR",
+    "FATAL"
 };
 
 #define LOG(log_level, format, ...) \
