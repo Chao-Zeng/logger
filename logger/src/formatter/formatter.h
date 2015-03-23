@@ -17,7 +17,7 @@ public:
     ~DefaultFormmater();
 
     //2015-03-04 15:28:30 [DEBUG] 19284:19318 main.cpp:10 main() : log message example
-    std::string operator() (Record record)
+    std::string format(Record record)
     {
         std::stringstream ss;
 
