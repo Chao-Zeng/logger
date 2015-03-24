@@ -1,54 +1,14 @@
 #ifndef _LOGGER_LOGGER_H_
 #define _LOGGER_LOGGER_H_
 
-#include <cstdio>
-#include <cstdarg>
+#include <logger/src/core/log_manager.h>
 
-#include <iostream>
-#include <sstream>
-
-namespace logger
-{
+using namespace logger;
 
 //user need to implement this function to configure logger what they want
 void init_logger();
 
-enum SeverityLevel
-{
-	TRACE,
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	FATAL
-};
+void set_log_level(SeverityLevel level);
 
-const char* const severity_level_name[] =
-{
-    "TRACE",
-    "DEBUG",
-    "INFO",
-    "WARNING",
-    "ERROR",
-    "FATAL"
-};
-
-#define LOG(log_level, format, ...) \
-    do \
-    { \
-    } while (0)
-
-//used before logger initialization, write log to console
-#define LOG_CONSOLE(log_level, format, ...) \
-    do \
-    { \
-        stringstream ss; \
-        ss << "[" << severity_level_name[log_level] << "]"; \
-        ss << " : "; \
-        fprintf(ss, format, ##__VA_ARGS__); \
-        std::cout << ss << "\n"; \
-    } while(0)
-
-} // namespace logger
-
+void write_log(SeverityLevel level, const char* format, ...);
 #endif // _LOGGER_LOGGER_H_

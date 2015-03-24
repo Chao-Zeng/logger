@@ -6,16 +6,12 @@
 #include <sstream>
 
 #include <logger/src/core/record.h>
-#include <logger/logger.h>
 
 namespace logger{
 
 class DefaultFormmater
 {
 public:
-    DefaultFormmater();
-    ~DefaultFormmater();
-
     //2015-03-04 15:28:30 [DEBUG] 19284:19318 main.cpp:10 main() : log message example
     std::string format(Record record)
     {

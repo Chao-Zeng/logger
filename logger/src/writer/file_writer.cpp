@@ -10,14 +10,8 @@
 namespace logger
 {
     
-FileWriter::FileWriter() : m_path(std::string()), m_filename(std::string()),
-    m_fullpath_filename_with_time(std::string()), m_file_size_max(0), m_file_handler(std::fstream())
-{
-}
-
-FileWriter::FileWriter(const std::string path, const std::string filename, uint64_t filesize)
-    : m_path(path), m_filename(filename), m_fullpath_filename_with_time(std::string()),
-      m_file_size_max(filesize), m_file_handler(std::fstream())
+FileWriter::FileWriter() : m_path(""), m_filename(""),
+    m_fullpath_filename_with_time(""), m_file_size_max(0)
 {
 }
 
@@ -76,6 +70,8 @@ bool FileWriter::write_line(const std::string& line)
     {
         return false;
     }
+
+    m_file_handler.flush();
     
     return true;
 }
@@ -118,7 +114,7 @@ bool FileWriter::check_file()
 
     int64_t filesize = get_file_size(m_fullpath_filename_with_time.c_str());
 
-    if (filesize < 0 || filesize > m_file_size_max)
+    if (filesize < 0 || filesize >(int64_t)m_file_size_max)
     {
         return false;
     }

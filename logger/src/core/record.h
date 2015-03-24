@@ -9,10 +9,28 @@
 
 #include <string>
 
-#include <logger/logger.h>
-
 namespace logger
 {
+
+enum SeverityLevel
+{
+    TRACE,
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR,
+    FATAL
+};
+
+const char* const severity_level_name[] =
+{
+    "TRACE",
+    "DEBUG",
+    "INFO",
+    "WARNING",
+    "ERROR",
+    "FATAL"
+};
 
 class Record
 {
@@ -26,7 +44,7 @@ public:
 	uint32_t line;
 	std::string function_name;
 
-    Record() : time(0, 0), level(INFO), pid(0), tid(0),
+    Record() : time(timeval()), level(INFO), pid(0), tid(0),
         message(""), filename(""), line(0), function_name("")
     {}
 };

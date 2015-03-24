@@ -12,12 +12,12 @@ template<typename value_type>
 class ConditionQueue
 {
 public:
-    ConditionQueue()
+    ConditionQueue() : m_queue_max_size(m_queue_default_size)
     {
         pthread_mutex_init(&m_mutex, NULL);
         pthread_cond_init(&m_cond, NULL);
 
-        m_queue.resize(m_queue_default_size);
+        //m_queue.resize(m_queue_default_size);
     }
 
     ~ConditionQueue()
@@ -50,7 +50,7 @@ public:
 
         while (m_queue.empty())
         {
-            pthread_cond_wait(&m_cond);
+            pthread_cond_wait(&m_cond, &m_mutex);
         }
 
         value_type element = m_queue.back();
@@ -58,6 +58,11 @@ public:
         pthread_mutex_unlock(&m_mutex);
 
         return element;
+    }
+
+    void set_max_size(size_t max_size)
+    {
+        m_queue_max_size = max_size;
     }
 
 private:

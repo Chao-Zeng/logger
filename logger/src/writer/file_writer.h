@@ -1,7 +1,7 @@
 #ifndef _LOGGER_FILE_WRITER_H_
 #define _LOGGER_FILE_WRITER_H_
 
-#include <cstdint>
+#include <stdint.h>
 
 #include <string>
 #include <fstream>
@@ -13,17 +13,15 @@ class FileWriter
 {
 public:
     FileWriter();
-    FileWriter(const std::string path, const std::string filename, uint64_t filesize);
-
     ~FileWriter();
 
     bool write_log(const std::string& log);
 
-    inline void set_file_path(const std::string& path);
+    void set_file_path(const std::string& path);
 
-    inline void set_file_name(const std::string& filename);
+    void set_file_name(const std::string& filename);
 
-    inline void set_file_size(uint64_t file_size);
+    void set_file_size(uint64_t file_size);
 
 private:
     bool write_line(const std::string& line);
