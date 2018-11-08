@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    init_logger();
+    init_logger("./log/", "log_", 100);
 
     write_log(INFO, "%s:%d this is a test message", __FILE__, __LINE__);
     write_log(TRACE, "this message shouldn't print");

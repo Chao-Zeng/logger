@@ -5,8 +5,7 @@
 
 using namespace logger;
 
-//user need to implement this function to configure logger what they want
-void init_logger();
+void init_logger(const std::string& path, const std::string& filename, uint64_t filesize/*M*/);
 
 void set_log_level(SeverityLevel level);
 

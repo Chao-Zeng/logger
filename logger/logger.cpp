@@ -8,11 +8,10 @@
 #include <cstdio>
 #include <sstream>
 
-const uint64_t log_file_size_limit = 100 * 1024 * 1024; // 100M
 
-void init_logger()
+void init_logger(const std::string& path, const std::string& filename, uint64_t filesize)
 {
-    LogManager<>::instance()->init("./", "log", log_file_size_limit);
+    LogManager<>::instance()->init(path, filename, filesize * 1024 * 1024);
     LogManager<>::instance()->set_log_level(INFO);
 }
 

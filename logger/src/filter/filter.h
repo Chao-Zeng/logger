@@ -10,7 +10,7 @@ class LevelFilter
 public:
     bool filter(SeverityLevel log_level, SeverityLevel filter_level)
     {
-        if (log_level > filter_level || log_level == filter_level)
+        if (log_level >= filter_level)
         {
             return true;
         }
