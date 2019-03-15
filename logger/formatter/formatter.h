@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-#include <logger/src/core/record.h>
+#include "core/record.h"
 
 namespace logger{
 

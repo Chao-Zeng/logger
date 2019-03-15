@@ -1,12 +1,10 @@
 #ifndef _LOGGER_RECORD_H_
 #define _LOGGER_RECORD_H_
 
-#include <sys/types.h>
 #include <unistd.h>
-
-#include <stdint.h>
 #include <sys/time.h>
 
+#include <cstdint>
 #include <string>
 
 namespace logger
@@ -37,8 +35,8 @@ class Record
 public:
 	struct timeval time;
 	SeverityLevel level;
-	pid_t pid;
-	pid_t tid;
+	int pid;
+	int tid;
 	std::string message;
 	std::string filename;
 	uint32_t line;

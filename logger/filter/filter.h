@@ -1,7 +1,7 @@
 #ifndef _LOGGER_FILTER_H_
 #define _LOGGER_FILTER_H_
 
-#include <logger/src/core/record.h>
+#include "core/record.h"
 
 namespace logger{
 
