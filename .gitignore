@@ -36,7 +36,6 @@
 !README.md
 !/doc
 !/logger
-!Makefile
-!Makefile_test
+!CMakeLists.txt
 !/test
 

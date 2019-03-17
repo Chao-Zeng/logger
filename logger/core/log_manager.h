@@ -69,14 +69,13 @@ private:
     }
 
 private:
-    LogManager() : m_tid(0), m_log_level(INFO)
+    LogManager() : m_log_level(INFO)
     {
     }
 
     ~LogManager() = default;
 
 private:
-    std::thread::id m_tid;
     SeverityLevel m_log_level;
 
     ConditionQueue<Record> m_log_queue;    

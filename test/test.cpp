@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     logger::write_log(TRACE, "this is a trace message");
 
     std::thread t(func);
-    t.join()
+    t.join();
     
     getchar();
     return 0;
