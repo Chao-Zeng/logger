@@ -1,7 +1,7 @@
 #ifndef _LOGGER_RECORD_H_
 #define _LOGGER_RECORD_H_
 
-#include <unistd.h>
+//#include <unistd.h>
 #include <sys/time.h>
 
 #include <cstdint>
@@ -36,14 +36,15 @@ public:
 	struct timeval time;
 	SeverityLevel level;
 	int pid;
-	int tid;
+	int tid_pthread;
+    int tid_lwp;
 	std::string message;
 	std::string filename;
 	uint32_t line;
 	std::string function_name;
 
-    Record() : time(timeval()), level(INFO), pid(0), tid(0),
-        message(""), filename(""), line(0), function_name("")
+    Record() : time(timeval()), level(INFO), pid(0), tid_pthread(0),
+        tid_lwp(0), message(""), filename(""), line(0), function_name("")
     {}
 };
 

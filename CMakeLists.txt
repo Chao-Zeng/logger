@@ -14,4 +14,4 @@ include_directories(${PROJECT_SOURCE_DIR}/logger)
 aux_source_directory(${PROJECT_SOURCE_DIR}/test TEST_SRC)
 
 add_executable(log_test ${TEST_SRC})
-
+target_link_libraries(log_test pthread)

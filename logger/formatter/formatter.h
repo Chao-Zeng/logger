@@ -19,7 +19,8 @@ public:
 
         ss << get_time_str(record.time) << " ";
         ss << "[" << severity_level_name[record.level] << "]" << " ";
-        ss << record.pid << ":" << record.tid << " ";
+        ss << record.pid << ":";
+        ss << std::hex << record.tid_pthread << std::dec << " ";
         
         if (!record.filename.empty() && 0 != record.line)
         {

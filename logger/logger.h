@@ -3,6 +3,7 @@
 
 #include <sys/syscall.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #include <cstdint>
 #include <cstdarg>
@@ -42,7 +43,8 @@ void write_log(SeverityLevel level, const char* format, ...)
     gettimeofday(&record.time, NULL);
     record.level = level;
     record.pid = getpid();
-    record.tid = syscall(SYS_gettid);
+    record.tid_pthread = pthread_self();
+    record.tid_lwp = syscall(SYS_gettid);
     record.message = log_message;
 
     LogManager<>::instance().write_log(record);

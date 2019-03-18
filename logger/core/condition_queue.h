@@ -15,9 +15,9 @@ public:
         m_queue_max_size(m_queue_default_size)
         {}
 
-    //delete copy constructor
+    // delete copy constructor
     ConditionQueue(const ConditionQueue&) = delete;
-    //delete copy assignment
+    // delete copy assignment
     ConditionQueue& operator=(const ConditionQueue&) = delete;
     // delete move constructor
     ConditionQueue(ConditionQueue&&) = delete;
